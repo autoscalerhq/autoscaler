@@ -1,0 +1,103 @@
+{
+  "name": "autoscaler",
+  "private": true,
+  "packageManager": "pnpm@8.6.10",
+  "scripts": {
+ },
+  "devDependencies": {
+    "@auto-it/npm": "^10.36.5",
+    "@auto-it/released": "^10.36.5",
+    "@commitlint/cli": "17.6.6",
+    "@commitlint/config-angular": "^17.0.0",
+    "@commitlint/config-conventional": "17.6.6",
+    "@cspell/eslint-plugin": "^6.14.3",
+    "@octokit/core": "^4.0.0",
+    "@pnpm/filter-workspace-packages": "^7.0.6",
+    "@pnpm/logger": "^5.0.0",
+    "@types/jest": "29.5.2",
+    "@types/node": "16.11.7",
+    "@typescript-eslint/eslint-plugin": "^5.50.0",
+    "@typescript-eslint/parser": "^5.50.0",
+    "cross-env": "^7.0.3",
+    "cspell": "^6.19.2",
+    "eslint": "^8.33.0",
+    "eslint-config-airbnb-typescript": "^17.0.0",
+    "eslint-config-prettier": "^8.6.0",
+    "eslint-import-resolver-webpack": "^0.13.2",
+    "eslint-plugin-eslint-comments": "^3.2.0",
+    "eslint-plugin-functional": "^3.7.2",
+    "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-jsx-a11y": "^6.5.1",
+    "eslint-plugin-prettier": "^4.2.1",
+    "eslint-plugin-promise": "^4.3.1",
+    "eslint-plugin-react": "7.32.2",
+    "eslint-plugin-react-hooks": "^4.4.0",
+    "eslint-plugin-spellcheck": "0.0.20",
+    "husky": "^8.0.1",
+    "jest": "27.5.1",
+    "lerna": "5.6.2",
+    "lint-staged": "^10.5.4",
+    "listr": "^0.14.3",
+    "markdownlint-cli": "^0.33.0",
+    "pnpm": "7.28.0",
+    "prettier": "~2.8.0",
+    "shelljs": "^0.8.5",
+    "tar": "^6.1.11",
+    "ts-jest": "27.1.5",
+    "ts-node": "~10.9.1",
+    "typescript": "4.9.5",
+    "prisma": "^4.14.1"
+  },
+  "workspaces": {
+    "packages": [
+      "apps/*",
+      "libs/*",
+      "packages/*",
+      "providers/*"
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "apps/**/*.{ts,tsx,json}": [
+      "prettier --ignore-path ./.prettierignore --write",
+      "eslint",
+      "stop-only --file"
+    ],
+    "packages/**/*.{ts,tsx,json}": [
+      "prettier --ignore-path ./.prettierignore --write",
+      "eslint",
+      "stop-only --file"
+    ],
+    "providers/**/*.{ts,json}": [
+      "prettier --ignore-path ./.prettierignore --write",
+      "eslint",
+      "stop-only --file"
+    ],
+    "docs/**/*.{md,mdx}": [
+      "prettier --ignore-path ./.prettierignore --write",
+      "markdownlint --ignore-path ./.gitignore --fix -c ./.markdownlint.jsonc"
+    ],
+    "libs/**/*.{ts,js,json}": [
+      "prettier --ignore-path ./.prettierignore --write",
+      "eslint",
+      "stop-only --file"
+    ]
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  },
+  "engines": {
+    "node": ">=13.0.0 <18.15.0",
+    "pnpm": "^8.6.10"
+  },
+  "dependencies": {
+    "nx": "^15.9.2",
+    "tslib": "^2.4.0"
+  }
+}

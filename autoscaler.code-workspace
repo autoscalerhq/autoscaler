@@ -1,0 +1,49 @@
+{
+  "folders": [
+    {
+      "name": "✨ autoscaler root",
+      "path": "."
+    },
+    {
+      "name": "🚀 @autoscaler/api",
+      "path": "apps/api"
+    },
+    {
+      "name": "🚀 @autoscaler/scaler",
+      "path": "apps/web"
+    },
+    {
+      "name": "🚀 @autoscaler/web",
+      "path": "apps/web"
+    },
+    {
+      "name": "📦 @autoscaler/dal",
+      "path": "libs/dal"
+    },
+    {
+      "name": "📦 @autoscaler/shared",
+      "path": "libs/shared"
+    },
+    {
+      "name": "📦 @autoscaler/testing",
+      "path": "libs/testing"
+    },
+  ],
+  "settings": {
+    "typescript.tsdk": "node_modules/typescript/lib",
+    "typescript.enablePromptUseWorkspaceTsdk": true,
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true,
+    "editor.formatOnPaste": true,
+    "cSpell.words": ["Chainable", "usecases"]
+  },
+  "extensions": {
+    "recommendations": [
+      "folke.vscode-monorepo-workspace",
+      "seatonjiang.gitmoji-vscode",
+      "jondot.vscode-hygen",
+      "esbenp.prettier-vscode",
+      "dbaeumer.vscode-eslint"
+    ]
+  }
+}
