@@ -29,24 +29,30 @@ services:
       - pulsarconf:/pulsar/conf
     command: bin/pulsar standalone
 
-  clickhouse: 
-    container_name: "autoscaler_clickhouse"
-    image: "clickhouse/clickhouse-server:latest"
-    environment:
-      - CLICKHOUSE_DB=autoscaler_clickhouse
-      - CLICKHOUSE_USER=user
-      - CLICKHOUSE_PASSWORD=password
-      - CLICKHOUSE_DEFAULT_ACCESS_MANAGEMENT=1
-    ports: 
-      - "18123:8123"
-      - "19000:9000"
-    volumes:
-      - /var/lib/clickhouse/
-      - /var/log/clickhouse-server/
-    ulimits:
-      nofile:
-        soft: 262144
-        hard: 262144
+  redis:
+    image: redis:7-alpine
+    container_name: bull_redis
+    ports:
+      - "6379:6379"
+
+#  clickhouse:
+#    container_name: "autoscaler_clickhouse"
+#    image: "clickhouse/clickhouse-server:latest"
+#    environment:
+#      - CLICKHOUSE_DB=autoscaler_clickhouse
+#      - CLICKHOUSE_USER=user
+#      - CLICKHOUSE_PASSWORD=password
+#      - CLICKHOUSE_DEFAULT_ACCESS_MANAGEMENT=1
+#    ports:
+#      - "18123:8123"
+#      - "19000:9000"
+#    volumes:
+#      - /var/lib/clickhouse/
+#      - /var/log/clickhouse-server/
+#    ulimits:
+#      nofile:
+#        soft: 262144
+#        hard: 262144
 volumes:
   pulsardata:
   pulsarconf:
