@@ -5,6 +5,9 @@ settings:
   excludeLinksFromLockfile: false
 
 dependencies:
+  '@prisma/client':
+    specifier: ^4.14.1
+    version: 4.14.1(prisma@4.14.1)
   nx:
     specifier: ^15.9.2
     version: 15.9.2
@@ -197,7 +200,7 @@ packages:
       parse-github-url: 1.0.2
       pretty-ms: 7.0.1
       requireg: 0.2.2
-      semver: 7.3.4
+      semver: 7.5.4
       signale: 1.4.0
       tapable: 2.2.1
       terminal-link: 2.1.1
@@ -1524,7 +1527,7 @@ packages:
       npm-package-arg: 8.1.1
       p-map: 4.0.0
       pacote: 13.6.2
-      semver: 7.3.4
+      semver: 7.5.4
     transitivePeerDependencies:
       - bluebird
       - supports-color
@@ -1555,7 +1558,7 @@ packages:
       p-map: 4.0.0
       p-map-series: 2.1.0
       p-waterfall: 2.1.1
-      semver: 7.3.4
+      semver: 7.5.4
     transitivePeerDependencies:
       - bluebird
       - supports-color
@@ -1662,7 +1665,7 @@ packages:
       npm-package-arg: 8.1.1
       npmlog: 6.0.2
       pify: 5.0.0
-      semver: 7.3.4
+      semver: 7.5.4
     dev: true
 
   /@lerna/create-symlink@5.6.2:
@@ -1689,7 +1692,7 @@ packages:
       p-reduce: 2.1.0
       pacote: 13.6.2
       pify: 5.0.0
-      semver: 7.3.4
+      semver: 7.5.4
       slash: 3.0.0
       validate-npm-package-license: 3.0.4
       validate-npm-package-name: 4.0.0
@@ -1798,7 +1801,7 @@ packages:
     engines: {node: ^14.15.0 || >=16.0.0}
     dependencies:
       '@lerna/child-process': 5.6.2
-      semver: 7.3.4
+      semver: 7.5.4
     dev: true
 
   /@lerna/import@5.6.2:
@@ -1974,7 +1977,7 @@ packages:
       '@lerna/validation-error': 5.6.2
       npm-package-arg: 8.1.1
       npmlog: 6.0.2
-      semver: 7.3.4
+      semver: 7.5.4
     dev: true
 
   /@lerna/package@5.6.2:
@@ -1990,7 +1993,7 @@ packages:
     resolution: {integrity: sha512-7gIm9fecWFVNy2kpj/KbH11bRcpyANAwpsft3X5m6J7y7A6FTUscCbEvl3ZNdpQKHNuvnHgCtkm3A5PMSCEgkA==}
     engines: {node: ^14.15.0 || >=16.0.0}
     dependencies:
-      semver: 7.3.4
+      semver: 7.5.4
     dev: true
 
   /@lerna/profiler@5.6.2:
@@ -2060,7 +2063,7 @@ packages:
       p-map: 4.0.0
       p-pipe: 3.1.0
       pacote: 13.6.2
-      semver: 7.3.4
+      semver: 7.5.4
     transitivePeerDependencies:
       - bluebird
       - encoding
@@ -2209,7 +2212,7 @@ packages:
       p-pipe: 3.1.0
       p-reduce: 2.1.0
       p-waterfall: 2.1.1
-      semver: 7.3.4
+      semver: 7.5.4
       slash: 3.0.0
       write-json-file: 4.3.0
     transitivePeerDependencies:
@@ -3173,10 +3176,27 @@ packages:
       write-yaml-file: 4.2.0
     dev: true
 
+  /@prisma/client@4.14.1(prisma@4.14.1):
+    resolution: {integrity: sha512-TZIswkeX1ccsHG/eN2kICzg/csXll0osK3EHu1QKd8VJ3XLcXozbNELKkCNfsCUvKJAwPdDtFCzF+O+raIVldw==}
+    engines: {node: '>=14.17'}
+    requiresBuild: true
+    peerDependencies:
+      prisma: '*'
+    peerDependenciesMeta:
+      prisma:
+        optional: true
+    dependencies:
+      '@prisma/engines-version': 4.14.0-67.d9a4c5988f480fa576d43970d5a23641aa77bc9c
+      prisma: 4.14.1
+    dev: false
+
+  /@prisma/engines-version@4.14.0-67.d9a4c5988f480fa576d43970d5a23641aa77bc9c:
+    resolution: {integrity: sha512-3jum8/YSudeSN0zGW5qkpz+wAN2V/NYCQ+BPjvHYDfWatLWlQkqy99toX0GysDeaUoBIJg1vaz2yKqiA3CFcQw==}
+    dev: false
+
   /@prisma/engines@4.14.1:
     resolution: {integrity: sha512-APqFddPVHYmWNKqc+5J5SqrLFfOghKOLZxobmguDUacxOwdEutLsbXPVhNnpFDmuQWQFbXmrTTPoRrrF6B1MWA==}
     requiresBuild: true
-    dev: true
 
   /@samverschueren/stream-to-observable@0.3.1(rxjs@6.6.7):
     resolution: {integrity: sha512-c/qwwcHyafOQuVQJj0IlBjf5yYgBI7YPJ77k4fOJYesb41jio65eaJODRUmfYKhTOFBrIZ66kgvGPlNbjuoRdQ==}
@@ -4327,7 +4347,7 @@ packages:
   /builtins@5.0.1:
     resolution: {integrity: sha512-qwVpFEHNfhYJIzNRBvd2C1kyo6jz3ZSMPyyuR47OPdiKWlbYnZNyDWuyR175qDnAJLiCo5fBBqPb3RiXgWlkOQ==}
     dependencies:
-      semver: 7.3.4
+      semver: 7.5.4
     dev: true
 
   /byte-size@7.0.1:
@@ -7698,7 +7718,7 @@ packages:
       jest-util: 27.5.1
       natural-compare: 1.4.0
       pretty-format: 27.5.1
-      semver: 7.3.4
+      semver: 7.5.4
     transitivePeerDependencies:
       - supports-color
     dev: true
@@ -8790,7 +8810,7 @@ packages:
     dependencies:
       hosted-git-info: 4.1.0
       is-core-module: 2.12.1
-      semver: 7.3.4
+      semver: 7.5.4
       validate-npm-package-license: 3.0.4
     dev: true
 
@@ -8847,7 +8867,7 @@ packages:
     engines: {node: '>=10'}
     dependencies:
       hosted-git-info: 3.0.8
-      semver: 7.3.4
+      semver: 7.5.4
       validate-npm-package-name: 3.0.0
     dev: true
 
@@ -9510,7 +9530,6 @@ packages:
     requiresBuild: true
     dependencies:
       '@prisma/engines': 4.14.1
-    dev: true
 
   /proc-log@2.0.1:
     resolution: {integrity: sha512-Kcmo2FhfDTXdcbfDH76N7uBYHINxc/8GW7UAVuVP9I+Va3uHSerrnKV6dLooga/gh7GlgzuCCr/eoldnL1muGw==}
