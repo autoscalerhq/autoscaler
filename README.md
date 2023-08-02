@@ -1,49 +1,57 @@
-## ️ 🚀 AutoScaler
+<center>
 
-a open source unified API autoscales your app based off your preferences.
+<img src="assets/AutoScaler.png" alt="Alt Text" width="600" height="200">
 
-## ✨ Features
+</center>
 
-- 🌈 Single API for all messaging providers (In-App, Email, SMS, Push, Chat)
-- 💅 Easily manage notifications over multiple channels
-- 🚀 Equipped with a CMS for advanced layouts and design management
-- 🛡 Built-in protection for missing variables (Coming Soon)
-- 📦 Easy to set up and integrate
-- 🛡 Debug and analyze multi-channel messages in a single dashboard
-- 📦 Embeddable notification center with real-time updates
-- 👨‍💻 Community driven
+<hr/>
 
-## 📚 Table Of Contents
+# 🚀 AutoScaler - Open-Source Autoscaling for Every System 🚀
 
-## ️⭐️ Getting Started
+AutoScaler is a powerful open-source autoscaling solution that empowers your systems with dynamic scaling capabilities. Whether you're running a small application or a large-scale platform, AutoScaler has got you covered! 📈
 
+## Planned Features 🔧
+🔌 **Ingestion Integrations**: AutoScaler seamlessly integrates with various data sources, making it easy to manage your system's performance.
 
-## Embeddable Notification Center
+⚙️ **Configurable Scaling Algorithms**: Tailor the scaling algorithms to suit your specific application's needs and optimize resource utilization.
 
-## Providers
+🔍 **Monitoring**: Monitor your system's metrics in real-time, ensuring you're always aware of its performance.
 
-- [x] [AWS](https://yourdad.zip/)
+📥 **Ingestion**: Easily ingest data from multiple sources to make informed scaling decisions.
 
+🧩 **Modular Scalers**: Choose from a variety of pre-built scalers or create custom ones that fit your unique requirements.
 
+🗃️ **Multiple Database Support**: AutoScaler supports a wide range of databases, ensuring compatibility with your preferred data storage solution.
 
-## 📋 Read Our Code Of Conduct
+💾 **Data Management**: Efficiently handle and manage data, avoiding data-related bottlenecks.
 
-Before you begin coding and collaborating, please read our [Code of Conduct]() thoroughly to understand the standards (that you are required to adhere to) for community engagement. As part of our open-source community, we hold ourselves and other contributors to a high standard of communication. As a participant and contributor to this project, you are agreeing to abide by our [Code of Conduct]()
+🔗 **Cross-System Correlation**: AutoScaler can intelligently correlate data from different systems, providing a comprehensive view of your entire infrastructure.
 
-## 💻 Need Help?
+🔒 **VPC PrivateLinks**: Keep your data and communication secure with VPC PrivateLinks support.
 
-We are more than happy to help you. If you are getting any errors or facing problems while working on this project, join our [Discord server]() and ask for help. We are open to discussing anything related to the project.
+🤖 **AI Autoscaling**: Utilize the power of AI to make automated, data-driven scaling decisions.
 
-## ⚡ Immediate working space with Gitpod
+📊 **Analytics & BI**: Gain valuable insights into your system's performance with integrated analytics and Business Intelligence tools.
 
-[![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/novuhq/novu)
+🏃 **Reliability & HA**: AutoScaler ensures high availability and reliability, guaranteeing a smooth scaling experience.
 
-## 🔗 Links
+🔑 **Roles & Permissions**: Manage access to AutoScaler with ease through comprehensive roles and permissions.
 
-## 🛡️ License
- 
-AutoScaler is licensed under the MIT License  
+🔐 **SSO (Single Sign-On)**: Enhance security and user experience by enabling Single Sign-On authentication.
 
-## 💪 Thanks To All Contributors
+## Getting Started 🏁
+To get started with AutoScaler, follow the instructions below:
 
-Thanks a lot for spending your time helping AutoScaler grow. Keep rocking 🥂
+Clone the repository: `git clone https://github.com/autoscaler/autoscaler.git`
+
+Install the required dependencies: `pnpm install`
+
+Navigate to docker/ and run the setup script: `./setup.sh`
+
+## Contributing 🤝
+We welcome contributions from the community! If you want to contribute to AutoScaler, please follow our Contribution Guidelines to get started.
+
+## License 📜
+AutoScaler is licensed under the MIT License.
+
+Get ready to supercharge your system's performance with AutoScaler! 🚀 Don't hesitate, start scaling smarter today! 😎💪
