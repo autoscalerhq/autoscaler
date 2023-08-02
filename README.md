@@ -1,13 +1,13 @@
-<center>
-
-<img src="assets/AutoScaler.png" alt="Alt Text" width="600" height="200">
-
-</center>
-
+<div align="center">
+  <picture>
+    <source media=   srcset="assets/AutoScaler.png">
+    <img src=assets/AutoScaler.png width="500" alt="Auto"/>
+  </picture>
+</div>
 <hr/>
+<h1 align="center"> 🚀 Open-Source Autoscaling for Every System 🚀</h1>
 
-# 🚀 AutoScaler - Open-Source Autoscaling for Every System 🚀
-
+## What is AutoScaler? ✨ 
 AutoScaler is a powerful open-source autoscaling solution that empowers your systems with dynamic scaling capabilities. Whether you're running a small application or a large-scale platform, AutoScaler has got you covered! 📈
 
 ## Planned Features 🔧
