@@ -42,7 +42,7 @@ AutoScaler is a powerful open-source autoscaling solution that empowers your sys
 ## Getting Started 🏁
 To get started with AutoScaler, follow the instructions below:
 
-Clone the repository: `git clone https://github.com/autoscaler/autoscaler.git`
+Clone the repository: `https://github.com/autoscaler-co/autoscaler.git`
 
 Install the required dependencies: `pnpm install`
 
