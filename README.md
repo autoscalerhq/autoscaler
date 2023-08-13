@@ -7,12 +7,16 @@
 <hr/>
 <h1 align="center"> 🚀 Open-Source Autoscaling for Every System 🚀</h1>
 
-## What is AutoScaler? ✨ 
-AutoScaler is a powerful open-source autoscaling solution that empowers your systems with dynamic scaling capabilities. Whether you're running a small application or a large-scale platform, AutoScaler has got you covered! 📈
+## Why Autoscaler? ✨ 
+Autoscaler is a powerful open-source autoscaling solution that empowers your systems with dynamic scaling capabilities.
+With Autoscaler, you can make your application specific actions trigger scaling events,
+ensuring your system's performance is always optimized.
+Whether you're running a small application or a large-scale platform, AutoScaler has got you covered! 📈
+
+## Features 🎉
+🔌 **Ingestion Integrations**: AutoScaler seamlessly integrates with various data sources and monitoring systems, making it easy to manage your system's performance.
 
 ## Planned Features 🔧
-🔌 **Ingestion Integrations**: AutoScaler seamlessly integrates with various data sources, making it easy to manage your system's performance.
-
 ⚙️ **Configurable Scaling Algorithms**: Tailor the scaling algorithms to suit your specific application's needs and optimize resource utilization.
 
 🔍 **Monitoring**: Monitor your system's metrics in real-time, ensuring you're always aware of its performance.
@@ -42,11 +46,103 @@ AutoScaler is a powerful open-source autoscaling solution that empowers your sys
 ## Getting Started 🏁
 To get started with AutoScaler, follow the instructions below:
 
-Clone the repository: `git clone https://github.com/autoscaler/autoscaler.git`
+Clone the repository: `git clone https://github.com/autoscaler-co/autoscaler.git`
 
 Install the required dependencies: `pnpm install`
 
 Navigate to docker/ and run the setup script: `./setup.sh`
+
+## Providers 📡
+Autoscaler supports a wide range of providers crossed many different categories. 
+
+Frameworks
+[ ] Nestjs
+[ ] BullMQ
+[ ] Celery
+[ ] Micronaut
+[ ] Quarkus
+
+Push Based Providers:
+[ ] AWS Cloudwatch
+[ ] Prometheus
+[ ] Datadog
+[ ] New Relic
+[ ] AWS CloudWatch
+[ ] Azure Monitor
+[ ] Google Cloud Monitoring
+[ ] InfluxDB
+[ ] Graphite
+[ ] StatsD
+[ ] SignalFx
+[ ] Splunk
+[ ] Sysdig
+[ ] ElasticSearch
+[ ] AppDynamics
+[ ] Dynatrace
+
+Pull Based Providers:
+[ ] InfluxDB
+[ ] Graphite
+[ ] StatsD
+[ ] SignalFx
+[ ] Splunk
+[ ] ElasticSearch
+[ ] AppDynamics
+[ ] Dynatrace
+[ ] Mixpanel
+[ ] New Relic
+[ ] DataDog
+[ ] MariaDB
+[ ] MySQL
+[ ] MongoDB
+[ ] Cassandra
+[ ] Pulsar
+[ ] Kafka
+[ ] RabbitMQ
+[ ] ActiveMQ
+[ ] Redis
+[ ] Memcached
+[ ] Couchbase
+[ ] CouchDB
+[ ] Neo4j
+[ ] OrientDB
+[ ] ArangoDB
+[ ] Aerospike
+[ ] Hazelcast
+[ ] VoltDB
+
+Analytics
+[ ] Clickhouse
+[ ] Segment
+[ ] Snowflake
+[ ] BigQuery
+[ ] Redshift
+[ ] GCP BigQuery
+[ ] AWS S3
+
+Scalers
+[ ] AWS ECS
+[ ] AWS EC2
+[ ] AWS Beanstalk
+[ ] Azure Containers
+[ ] Azure App Service
+[ ] GCP Containers
+[ ] GCP App Engine
+[ ] Digital Ocean
+[ ] Oracle VM
+[ ] Heroku
+[ ] Fly.io
+[ ] render
+[ ] Capcover
+[ ] microtica
+[ ] Docker
+
+Integrations
+[ ] Kubernetes
+[ ] Nomad
+[ ] Openshift
+[ ] VMWare
+[ ] Proxmox
 
 ## Contributing 🤝
 We welcome contributions from the community! If you want to contribute to AutoScaler, please follow our Contribution Guidelines to get started.
