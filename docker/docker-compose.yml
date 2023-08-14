@@ -1,7 +1,5 @@
 version: '3'
-networks:
-  pulsar:
-    driver: bridge
+
 services:
   zookeeper:
     image: apachepulsar/pulsar:latest
@@ -102,6 +100,7 @@ services:
   dashboard:
     container_name: "pulsar_manager"
     image: apachepulsar/pulsar-manager:v0.3.0
+    platform: linux/amd64
     ports:
       - "9527:9527"
       - "7750:7750"
@@ -124,6 +123,14 @@ services:
     ports:
       - "6379:6379"
 
+  cerbos:
+    image: ghcr.io/cerbos/cerbos:0.29.0
+    ports:
+      - '3593:3593'
+      - '3592:3592'
+    volumes:
+      - ../src/sal/policy:/policies
+
   localstack:
     container_name: "${LOCALSTACK_DOCKER_NAME-localstack_main}"
     image: "localstack/localstack:0.14.5"
@@ -140,24 +147,64 @@ services:
       retries: 15
       interval: 10s
 
-#  clickhouse:
-#    container_name: "autoscaler_clickhouse"
-#    image: "clickhouse/clickhouse-server:latest"
-#    environment:
-#      - CLICKHOUSE_DB=autoscaler_clickhouse
-#      - CLICKHOUSE_USER=user
-#      - CLICKHOUSE_PASSWORD=password
-#      - CLICKHOUSE_DEFAULT_ACCESS_MANAGEMENT=1
-#    ports:
-#      - "18123:8123"
-#      - "19000:9000"
-#    volumes:
-#      - /var/lib/clickhouse/
-#      - /var/log/clickhouse-server/
-#    ulimits:
-#      nofile:
-#        soft: 262144
-#        hard: 262144
+  vitess:
+    image: vitess/vttestserver:mysql80
+    ports:
+      - "33574:33574"
+      - "33575:33575"
+      - "33576:33576"
+      - "33577:33577"
+    environment:
+      PORT: 33574
+      NUM_SHARDS: "1"
+      KEYSPACES: "csgrader"
+      MYSQL_BIND_HOST: "0.0.0.0"
+      FOREIGN_KEY_MODE: "disallow"
+
+  clickhouse:
+    container_name: "autoscaler_clickhouse"
+    image: "clickhouse/clickhouse-server:latest"
+    environment:
+      - CLICKHOUSE_DB=autoscaler_clickhouse
+      - CLICKHOUSE_USER=user
+      - CLICKHOUSE_PASSWORD=password
+      - CLICKHOUSE_DEFAULT_ACCESS_MANAGEMENT=1
+    ports:
+      - "18123:8123"
+      - "19000:9000"
+    volumes:
+      - /var/lib/clickhouse/
+      - /var/log/clickhouse-server/
+    ulimits:
+      nofile:
+        soft: 262144
+        hard: 262144
+
+  supertokens:
+    image: registry.supertokens.io/supertokens/supertokens-mysql:6.0
+#    depends_on:
+#      vitess:
+#        condition: service_healthy
+    ports:
+      - 3567:3567
+    environment:
+      MYSQL_CONNECTION_URI: mysql://supertokens_user:somePassword@db:3306/supertokens
+    networks:
+      - app_network
+    restart: unless-stopped
+    healthcheck:
+      test: >
+        bash -c 'exec 3<>/dev/tcp/127.0.0.1/3567 && echo -e "GET /hello HTTP/1.1\r\nhost: 127.0.0.1:3567\r\nConnection: close\r\n\r\n" >&3 && cat <&3 | grep "Hello"'
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+networks:
+  pulsar:
+    driver: bridge
+  app_network:
+    driver: bridge
+
 volumes:
   pulsardata:
   pulsarconf:
