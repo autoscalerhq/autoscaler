@@ -20,13 +20,13 @@ datasource db {
 }
 
 model Organization {
-  id       String    @id @default(cuid()) @db.VarChar(30) @map("_id")
+  id       String    @id @default(cuid()) @map("_id") @db.VarChar(30)
   projects Project[]
   name     String?
 }
 
 model Project {
-  id             String        @id @default(cuid()) @db.VarChar(30) @map("_id")
+  id             String        @id @default(cuid()) @map("_id") @db.VarChar(30)
   name           String?
   organizationId String?
   environments   Environment[]
@@ -36,7 +36,7 @@ model Project {
 }
 
 model Environment {
-  id        String   @id @default(cuid()) @db.VarChar(30) @map("_id")
+  id        String   @id @default(cuid()) @map("_id") @db.VarChar(30)
   name      String?
   systems   System[]
   projectId String?
@@ -46,7 +46,7 @@ model Environment {
 }
 
 model System {
-  id                         String                @id @default(cuid()) @db.VarChar(30) @map("_id")
+  id                         String                @id @default(cuid()) @map("_id") @db.VarChar(30)
   name                       String?
   environmentId              String?
   Environment                Environment?          @relation(fields: [environmentId], references: [id])
@@ -64,7 +64,7 @@ model System {
 
 // Pre processing
 model Ingestor {
-  id       String  @id @default(cuid()) @db.VarChar(30) @map("_id")
+  id       String  @id @default(cuid()) @map("_id") @db.VarChar(30)
   key      String  @default(cuid())
   name     String?
   system   System  @relation(fields: [systemId], references: [id])
@@ -75,7 +75,7 @@ model Ingestor {
 
 // Post processing
 model Scaler {
-  id       String  @id @default(cuid()) @db.VarChar(30) @map("_id")
+  id       String  @id @default(cuid()) @map("_id") @db.VarChar(30)
   name     String?
   system   System  @relation(fields: [systemId], references: [id])
   systemId String
@@ -85,7 +85,7 @@ model Scaler {
 
 // Processing
 model Processor {
-  id       String  @id @default(cuid()) @db.VarChar(30) @map("_id")
+  id       String  @id @default(cuid()) @map("_id") @db.VarChar(30)
   name     String?
   system   System  @relation(fields: [systemId], references: [id])
   systemId String
@@ -95,7 +95,7 @@ model Processor {
 
 // Post processing
 model Analytic {
-  id       String  @id @default(cuid()) @db.VarChar(30) @map("_id")
+  id       String  @id @default(cuid()) @map("_id") @db.VarChar(30)
   name     String?
   system   System  @relation(fields: [systemId], references: [id])
   systemId String
@@ -105,7 +105,7 @@ model Analytic {
 
 // Post processing
 model Notifcation {
-  id       String  @id @default(cuid()) @db.VarChar(30) @map("_id")
+  id       String  @id @default(cuid()) @map("_id") @db.VarChar(30)
   name     String?
   system   System  @relation(fields: [systemId], references: [id])
   systemId String
@@ -126,7 +126,7 @@ model SystemConnection {
 
 // Processing
 model ProcessingAlgorithm {
-  id       String  @id @default(cuid()) @db.VarChar(30) @map("_id")
+  id       String  @id @default(cuid()) @map("_id") @db.VarChar(30)
   name     String?
   system   System  @relation(fields: [systemId], references: [id])
   systemId String
