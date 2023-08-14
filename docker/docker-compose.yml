@@ -147,20 +147,6 @@ services:
       retries: 15
       interval: 10s
 
-  vitess:
-    image: vitess/vttestserver:mysql80
-    ports:
-      - "33574:33574"
-      - "33575:33575"
-      - "33576:33576"
-      - "33577:33577"
-    environment:
-      PORT: 33574
-      NUM_SHARDS: "1"
-      KEYSPACES: "csgrader"
-      MYSQL_BIND_HOST: "0.0.0.0"
-      FOREIGN_KEY_MODE: "disallow"
-
   clickhouse:
     container_name: "autoscaler_clickhouse"
     image: "clickhouse/clickhouse-server:latest"
@@ -180,17 +166,29 @@ services:
         soft: 262144
         hard: 262144
 
+  vitess:
+    image: vitess/vttestserver:mysql80
+    ports:
+      - "33574:33574"
+      - "33575:33575"
+      - "33576:33576"
+      - "33577:33577"
+    environment:
+      PORT: 33574
+      NUM_SHARDS: "1"
+      KEYSPACES: "autoscaler"
+      MYSQL_BIND_HOST: "0.0.0.0"
+      FOREIGN_KEY_MODE: "disallow"
+
   supertokens:
     image: registry.supertokens.io/supertokens/supertokens-mysql:6.0
-#    depends_on:
-#      vitess:
-#        condition: service_healthy
+    depends_on:
+      db:
+        condition: service_healthy
     ports:
       - 3567:3567
     environment:
-      MYSQL_CONNECTION_URI: mysql://supertokens_user:somePassword@db:3306/supertokens
-    networks:
-      - app_network
+      MYSQL_CONNECTION_URI: mysql://root:root@vitess:33574/autoscaler
     restart: unless-stopped
     healthcheck:
       test: >
@@ -198,6 +196,7 @@ services:
       interval: 10s
       timeout: 5s
       retries: 5
+
 
 networks:
   pulsar:
