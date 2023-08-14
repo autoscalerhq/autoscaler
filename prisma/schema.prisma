@@ -19,49 +19,14 @@ datasource db {
   relationMode = "prisma"
 }
 
-model User {
-  id           String         @id @default(cuid()) @db.VarChar(30)
-  email        String         @unique
-  name         String?
-  password     String?
-  createdAt    DateTime       @default(now())
-  updatedAt    DateTime       @updatedAt
-  accounts     Account[]
-  Organization Organization[]
-}
-
-model Account {
-  id                String  @id @default(cuid()) @db.VarChar(30)
-  login             String? @unique
-  userId            String  @db.VarChar(30)
-  username          String?
-  provider          String
-  providerAccountId String
-  refresh_token     String? @db.Text
-  access_token      String? @db.Text
-  expires_at        Int?
-  token_type        String?
-  scope             String?
-  id_token          String? @db.Text
-  session_state     String?
-  user              User    @relation(fields: [userId], references: [id], onDelete: Cascade)
-
-  @@unique([provider, providerAccountId])
-  @@index([userId, provider])
-}
-
 model Organization {
-  id       String    @id @default(cuid()) @db.VarChar(30)
+  id       String    @id @default(cuid()) @db.VarChar(30) @map("_id")
   projects Project[]
   name     String?
-  User     User?     @relation(fields: [userId], references: [id])
-  userId   String?   @db.VarChar(30)
-
-  @@index([userId])
 }
 
 model Project {
-  id             String        @id @default(cuid()) @db.VarChar(30)
+  id             String        @id @default(cuid()) @db.VarChar(30) @map("_id")
   name           String?
   organizationId String?
   environments   Environment[]
@@ -71,7 +36,7 @@ model Project {
 }
 
 model Environment {
-  id        String   @id @default(cuid()) @db.VarChar(30)
+  id        String   @id @default(cuid()) @db.VarChar(30) @map("_id")
   name      String?
   systems   System[]
   projectId String?
@@ -81,10 +46,90 @@ model Environment {
 }
 
 model System {
-  id            String       @id @default(cuid()) @db.VarChar(30)
-  name          String?
-  environmentId String?
-  Environment   Environment? @relation(fields: [environmentId], references: [id])
+  id                         String                @id @default(cuid()) @db.VarChar(30) @map("_id")
+  name                       String?
+  environmentId              String?
+  Environment                Environment?          @relation(fields: [environmentId], references: [id])
+  Ingestor                   Ingestor[]
+  Scaler                     Scaler[]
+  Processor                  Processor[]
+  SourceSystemConnection     SystemConnection[]    @relation("Source")
+  ProcessingSystemConnection SystemConnection[]    @relation("Processing")
+  Analytic                   Analytic[]
+  Notifcation                Notifcation[]
+  ProcessingAlgorithm        ProcessingAlgorithm[]
 
   @@unique([environmentId])
+}
+
+// Pre processing
+model Ingestor {
+  id       String  @id @default(cuid()) @db.VarChar(30) @map("_id")
+  key      String  @default(cuid())
+  name     String?
+  system   System  @relation(fields: [systemId], references: [id])
+  systemId String
+
+  @@index([systemId])
+}
+
+// Post processing
+model Scaler {
+  id       String  @id @default(cuid()) @db.VarChar(30) @map("_id")
+  name     String?
+  system   System  @relation(fields: [systemId], references: [id])
+  systemId String
+
+  @@index([systemId])
+}
+
+// Processing
+model Processor {
+  id       String  @id @default(cuid()) @db.VarChar(30) @map("_id")
+  name     String?
+  system   System  @relation(fields: [systemId], references: [id])
+  systemId String
+
+  @@index([systemId])
+}
+
+// Post processing
+model Analytic {
+  id       String  @id @default(cuid()) @db.VarChar(30) @map("_id")
+  name     String?
+  system   System  @relation(fields: [systemId], references: [id])
+  systemId String
+
+  @@index([systemId])
+}
+
+// Post processing
+model Notifcation {
+  id       String  @id @default(cuid()) @db.VarChar(30) @map("_id")
+  name     String?
+  system   System  @relation(fields: [systemId], references: [id])
+  systemId String
+
+  @@index([systemId])
+}
+
+// Pre processing
+model SystemConnection {
+  name               String?
+  SourceSystem       System  @relation("Source", fields: [SourceSystemId], references: [id])
+  SourceSystemId     String
+  ProcessingSystem   System  @relation("Processing", fields: [ProcessingsystemId], references: [id])
+  ProcessingsystemId String
+
+  @@id([ProcessingsystemId, SourceSystemId])
+}
+
+// Processing
+model ProcessingAlgorithm {
+  id       String  @id @default(cuid()) @db.VarChar(30) @map("_id")
+  name     String?
+  system   System  @relation(fields: [systemId], references: [id])
+  systemId String
+
+  @@index([systemId])
 }
