@@ -102,3 +102,6 @@ docker/.env
 .vercel
 
 .pnpm-store/
+
+# Docker Compose - Pulsar data
+docker/data/*
